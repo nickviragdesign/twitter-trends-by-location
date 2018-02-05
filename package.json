@@ -1,6 +1,10 @@
 {
   "name": "twitter-trends-by-location",
   "version": "1.0.0",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/nickviragdesign/twitter-trends-by-location.git"
+  },
   "description": "A module that accepts a string (location) and returns trending topics from Twitter.",
   "main": "index.js",
   "scripts": {
