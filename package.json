@@ -1,0 +1,14 @@
+{
+  "name": "twitter-trends-by-location",
+  "version": "1.0.0",
+  "description": "A module that accepts a string (location) and returns trending topics from Twitter.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Nick Virag Design <nickviragdesign@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
