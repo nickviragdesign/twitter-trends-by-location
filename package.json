@@ -1,18 +1,27 @@
 {
   "name": "twitter-trends-by-location",
   "version": "1.0.0",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/nickviragdesign/twitter-trends-by-location.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickviragdesign/twitter-trends-by-location.git"
   },
   "description": "A module that accepts a string (location) and returns trending topics from Twitter.",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "babel src --presets babel-preset-env -d dist",
+    "prepublish": "npm run build"
   },
   "keywords": [],
   "author": "Nick Virag Design <nickviragdesign@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "node-geocoder": "^3.21.1",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
   }
 }
