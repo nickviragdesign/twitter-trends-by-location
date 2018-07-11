@@ -48,7 +48,7 @@ exports.closestAreaWithTrends = async (latitude, longitude) => {
 				closestAreaSimple = {
 					name: closestAreaVerbose.name,
 					country: closestAreaVerbose.country,
-					id: closestAreaVerbose.id
+					id: closestAreaVerbose.woeid
 				}
 			}
 		})
