@@ -62,10 +62,9 @@ exports.closestAreaWithTrends = async (latitude, longitude) => {
 // Left Off
 //
 
-exports.getTrendingTopics = async closestTrending => {
+exports.getTrendingTopics = async closestTrendingId => {
 
-    const woeid = JSON.parse(closestTrending)[0].woeid
-    const topicsURL = 'https://api.twitter.com/1.1/trends/place.json?id=' + woeid
+    const topicsURL = 'https://api.twitter.com/1.1/trends/place.json?id=' + closestTrendingId
 
     const optionsTopics = {
         url: topicsURL,
