@@ -23,7 +23,7 @@ exports.coordinates = async location => {
 	}
 }
 
-exports.closestAreaWithTrends = (latitude, longitude) => {
+exports.closestAreaWithTrends = async (latitude, longitude) => {
 	const optionsWoeid = {
 		url: `https://api.twitter.com/1.1/trends/closest.json?lat=${latitude}&long=${longitude}`,
 		headers: {
@@ -33,20 +33,24 @@ exports.closestAreaWithTrends = (latitude, longitude) => {
 			'mode': 'cors'}
 	}
 
-	return rp.get(optionsWoeid, (error, response, body) => {
-		if (error) {
-			throw error
-		} else {
-			return JSON.parse(response.body)[0]
-		}
-	})
+	try {
+		return await rp.get(optionsWoeid, (error, response, body) => {
+			if (error) {
+				throw error
+			} else {
+				return JSON.parse(response.body)[0]
+			}
+		})
+	} catch(e) {
+		throw e
+	}
 }
 
 //
 // Left Off
 //
 
-exports.getTrendingTopics = closestTrending => {
+exports.getTrendingTopics = async closestTrending => {
 
     const woeid = JSON.parse(closestTrending)[0].woeid
     const topicsURL = 'https://api.twitter.com/1.1/trends/place.json?id=' + woeid
@@ -60,11 +64,15 @@ exports.getTrendingTopics = closestTrending => {
             'mode': 'cors'}
     }
 
-    return rp.get(optionsTopics, (error, response, body) => {
-        if (error) {
-            throw error
-        } else {
-            return response.body
-        }
-    })
+	try {
+	    return await rp.get(optionsTopics, (error, response, body) => {
+	        if (error) {
+	            throw error
+	        } else {
+	            return response.body
+	        }
+	    })
+	} catch (e) {
+		throw e
+	}
 }
