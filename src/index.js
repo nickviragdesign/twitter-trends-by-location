@@ -34,13 +34,14 @@ exports.closestAreaWithTrends = async (latitude, longitude) => {
 	}
 
 	try {
-		return await rp.get(optionsWoeid, (error, response, body) => {
+		const area = await rp.get(optionsWoeid, (error, response, body) => {
 			if (error) {
 				throw error
 			} else {
 				return JSON.parse(response.body)[0]
 			}
 		})
+		return area
 	} catch(e) {
 		throw e
 	}
@@ -65,13 +66,14 @@ exports.getTrendingTopics = async closestTrending => {
     }
 
 	try {
-	    return await rp.get(optionsTopics, (error, response, body) => {
+	    const trends = await rp.get(optionsTopics, (error, response, body) => {
 	        if (error) {
 	            throw error
 	        } else {
 	            return response.body
 	        }
 	    })
+		return trends
 	} catch (e) {
 		throw e
 	}
