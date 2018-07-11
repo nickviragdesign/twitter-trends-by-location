@@ -10,13 +10,17 @@ const optionsGeocode = {
 }
 const geocoder = nodeGeocoder(optionsGeocode)
 
-exports.coordinates = location => {
-	const getCoords = geocoder.geocode(location)
-	const coords = {
-		latitude: getCoords[0].latitude,
-		longitude: getCoords[0].longitude
+exports.coordinates = async location => {
+	try {
+		const getCoords = await geocoder.geocode(location)
+		const coords = {
+			latitude: getCoords[0].latitude,
+			longitude: getCoords[0].longitude
+		}
+		return coords
+	} catch(e) {
+		throw e
 	}
-	return coords
 }
 
 exports.closestAreaWithTrends = (latitude, longitude) => {
