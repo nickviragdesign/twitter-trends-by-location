@@ -82,7 +82,7 @@ exports.getTrendingTopics = async closestTrendingId => {
 	        if (error) {
 	            throw error
 	        } else {
-	            trends= response.body[0].trends
+	            trends = JSON.parse(response.body)[0].trends
 	        }
 	    })
 		return trends
