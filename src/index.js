@@ -38,7 +38,10 @@ exports.closestAreaWithTrends = async (latitude, longitude) => {
 			if (error) {
 				throw error
 			} else {
-				return JSON.parse(response.body)[0]
+				const closestAreaArray = JSON.parse(response.body)[0]
+				console.log(closestAreaArray)
+				console.log(JSON.parse(closestAreaArray))
+				return closestAreaArray
 			}
 		})
 		return area
