@@ -33,21 +33,26 @@ exports.closestAreaWithTrends = async (latitude, longitude) => {
 			'mode': 'cors'}
 	}
 
+	let closestAreaSimple = {
+		name: '',
+		country: '',
+		id: ''
+	}
+
 	try {
-		const area = await rp.get(optionsWoeid, (error, response, body) => {
+		await rp.get(optionsWoeid, (error, response, body) => {
 			if (error) {
 				throw error
 			} else {
 				const closestAreaVerbose = JSON.parse(response.body)[0]
-				const closestAreaSimple = {
+				closestAreaSimple = {
 					name: closestAreaVerbose.name,
 					country: closestAreaVerbose.country,
 					id: closestAreaVerbose.id
 				}
-				return closestAreaSimple
 			}
 		})
-		return area
+		return closestAreaSimple
 	} catch(e) {
 		throw e
 	}
