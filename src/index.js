@@ -75,12 +75,14 @@ exports.getTrendingTopics = async closestTrendingId => {
             'mode': 'cors'}
     }
 
+	let trends = []
+
 	try {
-	    const trends = await rp.get(optionsTopics, (error, response, body) => {
+	    await rp.get(optionsTopics, (error, response, body) => {
 	        if (error) {
 	            throw error
 	        } else {
-	            return response.body
+	            trends= response.body[0].trends
 	        }
 	    })
 		return trends
